@@ -143,6 +143,8 @@ proc win*() =
 
   fbutton7.onClick = proc(event: ClickEvent) =
     outputTextArea.text = log10(inputTextArea.text.parseFloat()).formatFloat()
+  if Key_Q.isDown() and Key_ControlL.isDown():
+    app.quit()
 
   
   win.show()
