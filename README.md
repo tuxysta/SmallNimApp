@@ -6,3 +6,4 @@ I used the NiGui library in this software. My understanding is that I have to in
 
 This software is licensed under the MIT. Read LICENSE for details. 
 
+If you have any questions, reach me at protonfire0@outlook.com.
