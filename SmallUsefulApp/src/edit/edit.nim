@@ -66,6 +66,8 @@ proc run*() =
   save.onClick = proc(event: ClickEvent) =
     removeFile(filepath1.text)
     writeFile(filepath1.text, area.text)
+  if Key_Q.isDown() and Key_ControlL.isDown():
+    app.quit()
 
   
   w.show()
