@@ -1,5 +1,4 @@
-#I have to include this license https://github.com/trustable-code/NiGui/blob/master/license.md, because I use the NiGui lib.
-#
+
 #
 #The MIT License (MIT)
 #Copyright © 2021 <Baram Rosenstock>
