@@ -17,7 +17,7 @@ from  rng/rng import run1
 
 app.init()
 
-var window = newWindow("Go here to satisfy the MIT license. https://github.com/trustable-code/NiGui/blob/master/license.md")
+var window = newWindow("Choose!")
 window.height = 200
 window.width = 200
 
