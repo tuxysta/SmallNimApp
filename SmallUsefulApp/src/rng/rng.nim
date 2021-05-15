@@ -67,10 +67,14 @@ proc run1*() =
 
 
   but.onClick = proc(event: ClickEvent) =
+    try:
+      var a = parseInt(text1.text) 
+      var b = parseInt(text2.text)
+      text.text = intToStr((rand(a..b)))
+    except Exception:
+      app.quit()
+      app.run()
 
-    var a = parseInt(text1.text) 
-    var b = parseInt(text2.text)
-    text.text = intToStr((rand(a..b)))
   if Key_Q.isDown() and Key_ControlL.isDown():
     app.quit()
   w.show()

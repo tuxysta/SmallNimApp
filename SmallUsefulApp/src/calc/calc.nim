@@ -120,15 +120,16 @@ proc win*() =
   fbutton1.onClick = proc(event: ClickEvent) =
     try:
       outputTextArea.text = (inputTextArea.text.parseFloat() + inputTextArea1.text.parseFloat()).formatFloat()
-    else: Exception:
+    except Exception:
         
       app.quit()
       app.run()
 
 
   fbutton2.onClick = proc(event: ClickEvent) =
-    outputTextArea.text = (inputTextArea.text.parseFloat() - inputTextArea1.text.parseFloat()).formatFloat()
-    if Exception:
+    try:
+      outputTextArea.text = (inputTextArea.text.parseFloat() - inputTextArea1.text.parseFloat()).formatFloat()
+    except Exception:
       app.quit()
       app.run()
 
@@ -136,7 +137,7 @@ proc win*() =
   fbutton3.onClick = proc(event: ClickEvent) =
     try:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea1.text.parseFloat()).formatFloat()
-    else: Exception:
+    except Exception:
       app.quit()
       app.run()
 
@@ -144,7 +145,7 @@ proc win*() =
   fbutton4.onClick = proc(event: ClickEvent) =
     try:
       outputTextArea.text = (inputTextArea.text.parseFloat() / inputTextArea1.text.parseFloat()).formatFloat()
-    else: Exception:
+    except Exception:
       app.quit()
       app.run()
 
@@ -158,21 +159,21 @@ proc win*() =
   fbutton5.onClick = proc(event: ClickEvent) =
     try:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
-    else: Exception:
+    except Exception:
       app.quit()
       app.run()
 
   fbutton6.onClick = proc(event: ClickEvent) =
     try:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
-    else: Exception:
+    except Exception:
       app.quit()
       app.run()
   fbutton7.onClick = proc(event: ClickEvent) =
     try:
   
       outputTextArea.text = log10(inputTextArea.text.parseFloat()).formatFloat()
-    else: Exception:
+    except Exception:
       app.quit()
       app.run()
 
