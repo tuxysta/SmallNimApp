@@ -12,6 +12,7 @@
 from calc/calc import win
 import os, nigui, strutils, parseutils, math
 from  rng/rng import run1
+from NumberGuess/game import win
 
 
 type CustomButton = ref object of Button
@@ -48,7 +49,7 @@ con.add(middleCon1)
 
 
 var but1 = newButton("Calc")
-var but2 = newButton("Edit")
+var but2 = newButton("Guessing Game")
 var but3 = newButton("Random")
 var but4 = newButton("Quit")
 
@@ -72,7 +73,7 @@ but1.onClick = proc(event: ClickEvent) =
   
 
 but2.onClick = proc(event: ClickEvent) =
-  edit.run()
+  game.win()
   
 
 but3.onClick = proc(event: ClickEvent) =

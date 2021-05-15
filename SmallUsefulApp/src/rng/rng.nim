@@ -92,6 +92,7 @@ proc run1*() =
     try:
       var a = parseInt(text1.text) 
       var b = parseInt(text2.text)
+      randomize()
       text.text = intToStr((rand(a..b)))
     except Exception:
       app.quit()
