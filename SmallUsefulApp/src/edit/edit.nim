@@ -61,12 +61,19 @@ proc run*() =
 
 
   but.onClick = proc(event: ClickEvent) =
-    area.text = readFile(filepath1.text)
-
+    try:
+      area.text = readFile(filepath1.text)
+    except Exception:
+      app.quit()
+      app.run()
   save.onClick = proc(event: ClickEvent) =
-    removeFile(filepath1.text)
-    writeFile(filepath1.text, area.text)
-  if Key_Q.isDown() and Key_ControlL.isDown():
+    try:
+      removeFile(filepath1.text)
+      writeFile(filepath1.text, area.text)
+    except Exception:
+      app.quit()
+      app.run()
+  if Key_Q.isDown() and Key_Command.isDown():
     app.quit()
 
   
