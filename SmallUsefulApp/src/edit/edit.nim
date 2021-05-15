@@ -73,7 +73,7 @@ proc run*() =
     except Exception:
       app.quit()
       app.run()
-  if Key_Q.isDown() and Key_Command.isDown():
+  if Key_Q.isDown() and Key_Control.isDown():
     app.quit()
 
   
