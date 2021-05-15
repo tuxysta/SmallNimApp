@@ -9,6 +9,23 @@
 
 
 import nigui, strutils, os
+
+
+type CustomButton = ref object of Button
+method handleDrawEvent(control: CustomButton, event: DrawEvent) =
+  let canvas = event.control.canvas
+  canvas.areaColor = rgb(0, 255, 255)
+  canvas.textColor = rgb(55, 55, 55)
+  canvas.lineColor = rgb(255, 255, 255)
+  canvas.drawRectArea(0, 0, control.width, control.height)
+  canvas.drawTextCentered(control.text)
+  canvas.drawRectOutline(0, 0, control.width, control.height)
+  
+proc newButton(text = ""): Button =
+  result = new CustomButton
+  result.init()
+  result.text = text
+
 proc run*() =
   app.init()
   var w = newWindow("Edit")
@@ -41,7 +58,7 @@ proc run*() =
 
 
 
-  var instruct = newTextArea("Write the path of a text file in the bar below. Then press the file button. Keep the path in the bar! Edit in the big area, then press save. This only works if you have the path in the bar.")
+  var instruct = newTextArea("Write the path of a text file in the bar below. Then press the file button. Keep the path in the bar! Edit in the big area, then press save. The save only works if you have the path in the bar.")
   instruction.add(instruct)
   instruct.editable = false
 

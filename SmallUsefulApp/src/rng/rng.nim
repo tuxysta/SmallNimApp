@@ -10,11 +10,28 @@
 #THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import nigui, strutils, os, math, random
+
+
+type CustomButton = ref object of Button
+method handleDrawEvent(control: CustomButton, event: DrawEvent) =
+  let canvas = event.control.canvas
+  canvas.areaColor = rgb(0, 255, 255)
+  canvas.textColor = rgb(55, 55, 55)
+  canvas.lineColor = rgb(255, 255, 255)
+  canvas.drawRectArea(0, 0, control.width, control.height)
+  canvas.drawTextCentered(control.text)
+  canvas.drawRectOutline(0, 0, control.width, control.height)
+  
+proc newButton(text = ""): Button =
+  result = new CustomButton
+  result.init()
+  result.text = text
+
 proc run1*() =
   app.init()
   var w = newWindow("random")
-  w.height = 500
-  w.width = 500
+  w.height = 1000
+  w.width = 1000
 
 
 
@@ -29,12 +46,9 @@ proc run1*() =
   var file6 = newLayoutContainer(Layout_Horizontal)
 
   w.add(container)
-  file4.width = 500
-  file3.width = 500
   file4.height = 30
   file3.height = 30
-  file1.height = 10
-  file6.width = 500
+  file1.height = 5
   file6.height = 15
   container.add(file1)
   container.add(file6)
@@ -56,8 +70,10 @@ proc run1*() =
   text.fontSize = 48
   file5.add(text)
 
-  var text1label = newTextArea("Small number on top, big number below.")
-  text1label.editable = false
+
+  var text1label = newButton("Small number on top, big number below.")
+  text1label.widthMode = WidthMode_Expand
+
   file6.add(text1label)
   var text1 = newTextArea()
   text1.editable = true
