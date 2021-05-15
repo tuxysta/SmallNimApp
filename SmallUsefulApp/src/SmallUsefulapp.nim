@@ -13,6 +13,7 @@ from calc/calc import win
 import os, nigui, strutils, parseutils, math
 from  rng/rng import run1
 from NumberGuess/game import win
+from encrypttext/encrypttext import run1
 
 
 type CustomButton = ref object of Button
@@ -40,18 +41,27 @@ var con = newLayoutContainer(Layout_Vertical)
 var middleCon = newLayoutContainer(Layout_Horizontal)
 
 var middleCon1 = newLayoutContainer(Layout_Horizontal)
+var middleCon2 = newLayoutContainer(Layout_Horizontal)
+
 middleCon.height = 100
 middleCon1.height = 100
+middleCon2.height = 100
+
 window.add(con)
 con.add(middleCon)
 con.add(middleCon1)
+con.add(middleCon2)
+
 
 
 
 var but1 = newButton("Calc")
 var but2 = newButton("Guessing Game")
 var but3 = newButton("Random")
-var but4 = newButton("Quit")
+var but4 = newButton("Encrypt")
+var but5 = newButton("Quit")
+
+
 
 
 but1.widthMode = WidthMode_Expand
@@ -64,6 +74,8 @@ middleCon.add(but1)
 middleCon.add(but2)
 middleCon1.add(but3)
 middleCon1.add(but4)
+middleCon2.add(but5)
+
 
 
 
@@ -81,7 +93,10 @@ but3.onClick = proc(event: ClickEvent) =
   
 
 but4.onClick = proc(event: ClickEvent) =
+  encrypttext.run1()
+but5.onClick = proc(event: ClickEvent) =
   app.quit()
+  
 if Key_Q.isDown() and Key_ControlL.isDown():
   app.quit()
 
