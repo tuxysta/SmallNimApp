@@ -21,6 +21,7 @@ proc run1*() =
 
 
   var container = newLayoutContainer(Layout_Vertical)
+  var file1 = newLayoutContainer(Layout_Horizontal)
   var file2 = newLayoutContainer(Layout_Horizontal)
   var file3 = newLayoutContainer(Layout_Horizontal)
   var file4 = newLayoutContainer(Layout_Horizontal)
@@ -32,9 +33,10 @@ proc run1*() =
   file3.width = 500
   file4.height = 30
   file3.height = 30
-
+  file1.height = 10
   file6.width = 500
   file6.height = 15
+  container.add(file1)
   container.add(file6)
 
   container.add(file3)
@@ -42,10 +44,13 @@ proc run1*() =
   container.add(file2)
   container.add(file5)
 
-
+  var quit = newButton("Quit")
   var but = newButton("Generate a random int between the two ints you inputed above. They have to be valid ints.")
   but.widthMode = WidthMode_Expand
+  quit.widthMode = WidthMode_Expand
   file2.add(but)
+  file1.add(quit)
+
   var text = newTextArea()
   text.editable = false
   text.fontSize = 48
@@ -64,7 +69,8 @@ proc run1*() =
 
 
 
-
+  quit.onClick = proc(event: ClickEvent) =
+    app.quit()
 
   but.onClick = proc(event: ClickEvent) =
     try:
