@@ -21,6 +21,7 @@ proc win*() =
   win.width = 1000
 
   var container = newLayoutContainer(Layout_Vertical)
+  var newcontainer1 = newLayoutContainer(Layout_Horizontal)
   var newcontainer = newLayoutContainer(Layout_Horizontal)
   var sidecontainer = newLayoutContainer(Layout_Horizontal)
   var sidecontainer1 = newLayoutContainer(Layout_Horizontal)
@@ -31,6 +32,8 @@ proc win*() =
   var bottomContainer = newLayoutContainer(Layout_Horizontal)
   newcontainer.width = 1000
   newcontainer.height = 50
+  newcontainer1.height = 20
+
 
   win.add(container)
   container.add(newcontainer)
@@ -90,16 +93,19 @@ proc win*() =
   fbutton7.fontSize = 36
 
 
-
+  var quit = newButton("Quit")
   var pibutton = newButton("pi")
   var ebutton = newButton("e")
   pibutton.widthMode = WidthMode_Expand
   ebutton.widthMode = WidthMode_Expand
+  quit.widthMode = WidthMode_Expand
 
   ebutton.fontSize = 18
   pibutton.fontSize = 18
 
 
+
+  newcontainer1.add(quit)
   newcontainer.add(inputTextAreaLabel)
   sideContainer.add(pibutton)
   sideContainer.add(ebutton)  
@@ -176,6 +182,10 @@ proc win*() =
     except Exception:
       app.quit()
       app.run()
+  
+  quit.onClick = proc(event: ClickEvent) =
+    
+    app.quit()
 
   if Key_Q.isDown() and Key_ControlL.isDown():
     app.quit()

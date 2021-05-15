@@ -33,9 +33,10 @@ proc run*() =
 
   w.add(container)
   container.add(instruction)
+  container.add(file2)
   container.add(filepath)
   container.add(file1)
-  container.add(file2)
+  
   
 
 
@@ -51,6 +52,9 @@ proc run*() =
   var but = newButton("File")
   file2.add(but)
 
+  var quit = newButton("Quit")
+  file2.add(quit)
+
   var area = newTextArea()
   file1.add(area)
 
@@ -59,6 +63,9 @@ proc run*() =
 
 
 
+  save.widthMode = WidthMode_Expand
+  but.widthMode = WidthMode_Expand
+  quit.widthMode = WidthMode_Expand
 
   but.onClick = proc(event: ClickEvent) =
     try:
@@ -73,7 +80,12 @@ proc run*() =
     except Exception:
       app.quit()
       app.run()
-  if Key_Q.isDown() and Key_Control.isDown():
+  
+  quit.onClick = proc(event: ClickEvent) =
+    
+    app.quit()
+
+  if Key_Q.isDown() and Key_ControlL.isDown():
     app.quit()
 
   
