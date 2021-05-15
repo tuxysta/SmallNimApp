@@ -36,6 +36,7 @@ proc win*() =
 
 
   win.add(container)
+  container.add(newcontainer1)
   container.add(newcontainer)
   container.add(sidecontainer1)
   container.add(topContainer)
