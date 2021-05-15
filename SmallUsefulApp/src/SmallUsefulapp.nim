@@ -55,15 +55,15 @@ middleCon1.add(but4)
 
 but1.onClick = proc(event: ClickEvent) =
   calc.win()
-  window.dispose()
+  
 
 but2.onClick = proc(event: ClickEvent) =
   edit.run()
-  window.dispose()
+  
 
 but3.onClick = proc(event: ClickEvent) =
   rng.run1()
-  window.dispose()
+  
 
 but4.onClick = proc(event: ClickEvent) =
   app.quit()
