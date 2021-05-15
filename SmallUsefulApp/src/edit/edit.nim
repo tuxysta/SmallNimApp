@@ -87,16 +87,12 @@ proc run*() =
   but.onClick = proc(event: ClickEvent) =
     try:
       area.text = readFile(filepath1.text)
-    except Exception:
-      app.quit()
-      app.run()
+    
   save.onClick = proc(event: ClickEvent) =
     try:
       removeFile(filepath1.text)
       writeFile(filepath1.text, area.text)
-    except Exception:
-      app.quit()
-      app.run()
+    
   
   quit.onClick = proc(event: ClickEvent) =
     
