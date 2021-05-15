@@ -11,7 +11,6 @@
 
 from calc/calc import win
 import os, nigui, strutils, parseutils, math
-from  edit/edit import run
 from  rng/rng import run1
 
 
