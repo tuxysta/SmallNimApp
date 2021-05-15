@@ -1,21 +1,21 @@
 
-import nigui, strutils, os, math, random
+#
+#The MIT License (MIT)
+#Copyright © 2021 <Baram Rosenstock>
+
+#Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+#The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+#THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-type CustomButton1 = ref object of Button
-method handleDrawEvent(control: CustomButton1, event: DrawEvent) =
+import os, nigui, strutils, parseutils, math, random, times
+
+type CustomButton = ref object of Button
+method handleDrawEvent(control: CustomButton, event: DrawEvent) =
   let canvas = event.control.canvas
   canvas.areaColor = rgb(0, 255, 255)
-  canvas.textColor = rgb(255,255, 255)
-  canvas.lineColor = rgb(255, 255, 255)
-  canvas.drawRectArea(0, 0, control.width, control.height)
-  canvas.drawTextCentered(control.text)
-  canvas.drawRectOutline(0, 0, control.width, control.height)
-
-type CustomButton2 = ref object of Button
-method handleDrawEvent(control: CustomButton2, event: DrawEvent) =
-  let canvas = event.control.canvas
-  canvas.areaColor = rgb(255, 0, 0)
   canvas.textColor = rgb(55, 55, 55)
   canvas.lineColor = rgb(255, 255, 255)
   canvas.drawRectArea(0, 0, control.width, control.height)
@@ -23,63 +23,103 @@ method handleDrawEvent(control: CustomButton2, event: DrawEvent) =
   canvas.drawRectOutline(0, 0, control.width, control.height)
   
 proc newButton(text = ""): Button =
-  result = new CustomButton1
-  result.init()
-  result.text = text
- 
-
-proc newButton1(text = ""): Button =
-  result = new CustomButton2
+  result = new CustomButton
   result.init()
   result.text = text
 
-proc run1*() =
+
+proc win*() = 
+
   app.init()
-  var w = newWindow("game")
-  w.height = 500
-  w.width = 500
 
-
-
-
+  var win = newWindow("Calc")
+  win.height = 1000
+  win.width = 1000
 
   var container = newLayoutContainer(Layout_Vertical)
-  var file1 = newLayoutContainer(Layout_Horizontal)
-  var file2 = newLayoutContainer(Layout_Horizontal)
-  file2.height = 250
+  var newcontainer1 = newLayoutContainer(Layout_Horizontal)
+  var sidecontainer1 = newLayoutContainer(Layout_Horizontal)
+  var sidecontainer = newLayoutContainer(Layout_Horizontal)
+  var bottomContainer = newLayoutContainer(Layout_Horizontal)
+  var topContainer = newLayoutContainer(Layout_Horizontal)
+  newcontainer1.height = 20
 
 
-  w.add(container)
+  win.add(container)
+  container.add(newcontainer1)
+  container.add(sidecontainer1)
+  container.add(sidecontainer)
+  container.add(topContainer)
+  container.add(bottomContainer)
+
+  var inputTextArea = newTextArea("")
+  var outputTextArea = newTextArea("")
+
+  inputTextArea.fontFamily = "Courier New"
+  outputTextArea.fontFamily = "Courier New"
+  inputTextArea.fontSize = 18
+  outputTextArea.fontSize = 18
+
+  inputTextArea.editable = true
+  outputTextArea.editable = false
+
+  var fbutton6 = newButton("Guess a number between 0, and 1000")
+  var fbutton7 = newButton("Guess")
+
+
+
+  fbutton6.widthMode = WidthMode_Expand
+  fbutton7.widthMode = WidthMode_Expand
+
+
+  fbutton6.fontSize = 36
+  fbutton7.fontSize = 36
+
+  randomize() 
+
+  var a = rand(1000)
+  proc bar() =
   
-  container.add(file1)
-  container.add(file2)
+    if a > inputTextArea.text.parseInt():
+      outputTextArea.text = "To small"
+    if a < inputTextArea.text.parseInt():
+      outputTextArea.text = "To big"
+    if a == inputTextArea.text.parseInt():
+      outputTextArea.text = "Just right!!"
+
+
 
   var quit = newButton("Quit")
   quit.widthMode = WidthMode_Expand
 
-  file1.add(quit)
-  var text1 = newButton()
-  text1.widthMode = WidthMode_Expand
-  file1.add(text1)
-  var text = newTextArea()
-  text.editable = true
-  file2.add(text)
+  newcontainer1.add(quit)
+  topContainer.add(inputTextArea)
+  sidecontainer.add(fbutton7)
+  sidecontainer1.add(fbutton6)
+  bottomContainer.add(outputTextArea)
 
+  fbutton7.onClick = proc(event: ClickEvent) =
+    randomize() 
 
+    var a = rand(1000)
+    
+  fbutton7.onClick = proc(event: ClickEvent) =
 
-
+    try:
+      
+      bar()
+    except Exception:
+      app.quit()
+      app.run()
+     
+  
   quit.onClick = proc(event: ClickEvent) =
+    
     app.quit()
-
-  #but.onClick = proc(event: ClickEvent) =
-    ##try:
-    ##except Exception:
-      ##app.quit()
-      ##app.run()
 
   if Key_Q.isDown() and Key_ControlL.isDown():
     app.quit()
-  w.show()
-  app.run()
 
-run1()
+  
+  win.show()
+  app.run()
