@@ -118,31 +118,64 @@ proc win*() =
 
   ## Events ##
   fbutton1.onClick = proc(event: ClickEvent) =
-    outputTextArea.text = (inputTextArea.text.parseFloat() + inputTextArea1.text.parseFloat()).formatFloat()
+    try:
+      outputTextArea.text = (inputTextArea.text.parseFloat() + inputTextArea1.text.parseFloat()).formatFloat()
+    else: Exception:
+        
+      app.quit()
+      app.run()
+
 
   fbutton2.onClick = proc(event: ClickEvent) =
     outputTextArea.text = (inputTextArea.text.parseFloat() - inputTextArea1.text.parseFloat()).formatFloat()
+    if Exception:
+      app.quit()
+      app.run()
+
 
   fbutton3.onClick = proc(event: ClickEvent) =
-    outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea1.text.parseFloat()).formatFloat()
+    try:
+      outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea1.text.parseFloat()).formatFloat()
+    else: Exception:
+      app.quit()
+      app.run()
+
 
   fbutton4.onClick = proc(event: ClickEvent) =
-    outputTextArea.text = (inputTextArea.text.parseFloat() / inputTextArea1.text.parseFloat()).formatFloat()
+    try:
+      outputTextArea.text = (inputTextArea.text.parseFloat() / inputTextArea1.text.parseFloat()).formatFloat()
+    else: Exception:
+      app.quit()
+      app.run()
 
   pibutton.onClick = proc(event: ClickEvent) =
+
     inputTextArea.text = "3.1415"
 
   ebutton.onClick = proc(event: ClickEvent) =
     inputTextArea.text = "2.7182"
 
   fbutton5.onClick = proc(event: ClickEvent) =
-    outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
+    try:
+      outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
+    else: Exception:
+      app.quit()
+      app.run()
 
   fbutton6.onClick = proc(event: ClickEvent) =
-    outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
-
+    try:
+      outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
+    else: Exception:
+      app.quit()
+      app.run()
   fbutton7.onClick = proc(event: ClickEvent) =
-    outputTextArea.text = log10(inputTextArea.text.parseFloat()).formatFloat()
+    try:
+  
+      outputTextArea.text = log10(inputTextArea.text.parseFloat()).formatFloat()
+    else: Exception:
+      app.quit()
+      app.run()
+
   if Key_Q.isDown() and Key_ControlL.isDown():
     app.quit()
 
