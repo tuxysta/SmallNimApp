@@ -34,7 +34,7 @@ app.init()
 
 var window = newWindow("Choose!")
 window.height = 200
-window.width = 200
+window.width = 400
 
 var con = newLayoutContainer(Layout_Vertical)
 var middleCon = newLayoutContainer(Layout_Horizontal)
