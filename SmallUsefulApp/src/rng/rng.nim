@@ -24,9 +24,9 @@ method handleDrawEvent(control: CustomButton, event: DrawEvent) =
   canvas.drawRectOutline(0, 0, control.width, control.height)
 
 proc newButton(text = ""): Button =
-result = new CustomButton
-result.init()
-result.text = text
+  result = new CustomButton
+  result.init()
+  result.text = text
 
 app.init()
 var w = newWindow("random")
