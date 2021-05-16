@@ -11,7 +11,7 @@
 
 
 import os, nigui
-fromstrutils import parseInt, parseFloat, formatFloat, intToStr
+from strutils import parseInt, parseFloat, formatFloat, intToStr
 from math import log10, round
 
 type CustomButton = ref object of Button
@@ -141,32 +141,32 @@ bottomContainer.add(outputTextArea)
 
 var floattrue = false;
 fbutton.onClick = proc(event: ClickEvent) =
-try:
-if floattrue == true:
-floattrue = false;
-else:
-floattrue = true;
-except Exception:
-app.quit()
-app.run()
+  try:
+    if floattrue == true:
+      floattrue = false;
+    else:
+      floattrue = true;
+  except Exception:
+    app.quit()
+    app.run()
 fbutton1.onClick = proc(event: ClickEvent) =
-try:
-if floattrue:
-outputTextArea.text = (inputTextArea.text.parseFloat() + inputTextArea1.text.parseFloat()).formatFloat()
-else:
-outputTextArea.text = intToStr(inputTextArea.text.parseInt() + inputTextArea1.text.parseInt())
-except Exception:
+  try:
+    if floattrue:
+      outputTextArea.text = (inputTextArea.text.parseFloat() + inputTextArea1.text.parseFloat()).formatFloat()
+    else:
+      outputTextArea.text = intToStr(inputTextArea.text.parseInt() + inputTextArea1.text.parseInt())
+  except Exception:
 
-app.quit()
-app.run()
+    app.quit()
+    app.run()
 
 
 fbutton2.onClick = proc(event: ClickEvent) =
   try:
-  if floattrue:
-    outputTextArea.text = (inputTextArea.text.parseFloat() - inputTextArea1.text.parseFloat()).formatFloat()
-  else:
-    outputTextArea.text = intToStr(inputTextArea.text.parseInt() - inputTextArea1.text.parseInt())
+    if floattrue:
+      outputTextArea.text = (inputTextArea.text.parseFloat() - inputTextArea1.text.parseFloat()).formatFloat()
+    else:
+      outputTextArea.text = intToStr(inputTextArea.text.parseInt() - inputTextArea1.text.parseInt())
 
   except Exception:
     app.quit()
@@ -175,21 +175,21 @@ fbutton2.onClick = proc(event: ClickEvent) =
 
 fbutton3.onClick = proc(event: ClickEvent) =
   try:
-  if floattrue:
-    outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea1.text.parseFloat()).formatFloat()
-  else:
-    outputTextArea.text = intToStr(inputTextArea.text.parseInt() * inputTextArea1.text.parseInt())
+    if floattrue:
+      outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea1.text.parseFloat()).formatFloat()
+    else:
+      outputTextArea.text = intToStr(inputTextArea.text.parseInt() * inputTextArea1.text.parseInt())
   except Exception:
     app.quit()
     app.run()
 
 
 fbutton4.onClick = proc(event: ClickEvent) =
-try:
-  if floattrue:
-    outputTextArea.text = (inputTextArea.text.parseFloat() / inputTextArea1.text.parseFloat()).formatFloat()
-  else:
-  outputTextArea.text = intToStr(int(inputTextArea.text.parseInt() / inputTextArea1.text.parseInt()))
+  try:
+    if floattrue:
+      outputTextArea.text = (inputTextArea.text.parseFloat() / inputTextArea1.text.parseFloat()).formatFloat()
+    else:
+      outputTextArea.text = intToStr(int(inputTextArea.text.parseInt() / inputTextArea1.text.parseInt()))
   except Exception:
     app.quit()
     app.run()
@@ -205,28 +205,28 @@ fbutton5.onClick = proc(event: ClickEvent) =
   try:
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
-  else:
-    outputTextArea.text = intToStr(inputTextArea.text.parseInt() * inputTextArea.text.parseInt())
+    else:
+      outputTextArea.text = intToStr(inputTextArea.text.parseInt() * inputTextArea.text.parseInt())
   except Exception:
-  app.quit()
-  app.run()
+    app.quit()
+    app.run()
 
 fbutton6.onClick = proc(event: ClickEvent) =
   try:
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
-  else:
-    outputTextArea.text = intToStr(inputTextArea.text.parseInt() * inputTextArea.text.parseInt() * inputTextArea.text.parseInt())
-except Exception:
-  app.quit()
-  app.run()
+    else:
+      outputTextArea.text = intToStr(inputTextArea.text.parseInt() * inputTextArea.text.parseInt() * inputTextArea.text.parseInt())
+  except Exception:
+    app.quit()
+    app.run()
 fbutton7.onClick = proc(event: ClickEvent) =
   try:
     outputTextArea.text = log10(inputTextArea.text.parseFloat()).formatFloat()
 
   except Exception:
-  app.quit()
-  app.run()
+    app.quit()
+    app.run()
 
 quit.onClick = proc(event: ClickEvent) =
 
@@ -236,7 +236,7 @@ if Key_Q.isDown() and Key_ControlL.isDown():
   app.quit()
 
 
-proc win*() = 
+proc winq*() = 
 
 
   win.show()
