@@ -15,13 +15,13 @@ from strutils import parseInt, inttoStr
 
 type CustomButton = ref object of Button
 method handleDrawEvent(control: CustomButton, event: DrawEvent) =
-let canvas = event.control.canvas
-canvas.areaColor = rgb(0, 255, 255)
-canvas.textColor = rgb(55, 55, 55)
-canvas.lineColor = rgb(255, 255, 255)
-canvas.drawRectArea(0, 0, control.width, control.height)
-canvas.drawTextCentered(control.text)
-canvas.drawRectOutline(0, 0, control.width, control.height)
+  let canvas = event.control.canvas
+  canvas.areaColor = rgb(0, 255, 255)
+  canvas.textColor = rgb(55, 55, 55)
+  canvas.lineColor = rgb(255, 255, 255)
+  canvas.drawRectArea(0, 0, control.width, control.height)
+  canvas.drawTextCentered(control.text)
+  canvas.drawRectOutline(0, 0, control.width, control.height)
 
 proc newButton(text = ""): Button =
 result = new CustomButton
