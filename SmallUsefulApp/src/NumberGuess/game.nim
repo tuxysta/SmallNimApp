@@ -75,8 +75,8 @@ fbutton6.fontSize = 36
 fbutton7.fontSize = 36
 
 randomize() 
-
 var a = rand(1000)
+
 proc bar() =
 
   if a > inputTextArea.text.parseInt():
@@ -100,7 +100,6 @@ bottomContainer.add(outputTextArea)
 fbutton7.onClick = proc(event: ClickEvent) =
   randomize() 
 
-var a = rand(1000)
 
 fbutton7.onClick = proc(event: ClickEvent) =
 
@@ -122,6 +121,6 @@ if Key_Q.isDown() and Key_ControlL.isDown():
 
 
 
-proc win*() =
+proc winl*() =
   win.show()
   app.run()

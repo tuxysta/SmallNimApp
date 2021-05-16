@@ -12,7 +12,7 @@
 from calc/calc import winq
 import nigui
 from  rng/rng import run1
-from NumberGuess/game import win
+from NumberGuess/game import winl
 from encrypttext/encrypttext import run1
 
 
@@ -86,7 +86,7 @@ but1.onClick = proc(event: ClickEvent) =
   
 
 but2.onClick = proc(event: ClickEvent) =
-  game.win()
+  game.winl()
   
 
 but3.onClick = proc(event: ClickEvent) =
