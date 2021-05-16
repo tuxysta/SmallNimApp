@@ -102,11 +102,12 @@ proc run1*() =
 
 
   but.onClick = proc(event: ClickEvent) =
-    
-    text3.text = caesar(text1.text, text2.text.parseInt(), decode)
-    #except Exception:
-      #app.quit()
-      #app.run()
+    try:
+
+      text3.text = caesar(text1.text, text2.text.parseInt(), decode)
+    except Exception:
+      app.quit()
+      app.run()
 
   if Key_Q.isDown() and Key_ControlL.isDown():
 
