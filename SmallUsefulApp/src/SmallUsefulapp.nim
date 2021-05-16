@@ -93,6 +93,7 @@ but3.onClick = proc(event: ClickEvent) =
 
 but4.onClick = proc(event: ClickEvent) =
   encrypttext.run1()
+  
 but5.onClick = proc(event: ClickEvent) =
   app.quit()
   
