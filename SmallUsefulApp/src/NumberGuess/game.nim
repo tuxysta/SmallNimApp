@@ -63,7 +63,7 @@ proc win*() =
   inputTextArea.editable = true
   outputTextArea.editable = false
 
-  var fbutton6 = newButton("Guess a number between 0, and 1000")
+  var fbutton6 = newButton("Guess a number between 0 and 1000")
   var fbutton7 = newButton("Guess")
 
 
@@ -81,9 +81,9 @@ proc win*() =
   proc bar() =
   
     if a > inputTextArea.text.parseInt():
-      outputTextArea.text = "To small"
+      outputTextArea.text = "Too small"
     if a < inputTextArea.text.parseInt():
-      outputTextArea.text = "To big"
+      outputTextArea.text = "Too big"
     if a == inputTextArea.text.parseInt():
       outputTextArea.text = "Just right!!"
 
