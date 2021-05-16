@@ -5,7 +5,7 @@ This app can act as a ceaser shifter, be used as a calculator, act as a convenie
 
 
 
-This software is licensed under the MIT. Read LICENSE for details. 
+This software is licensed under the MIT software license. Read LICENSE for details. 
 
 
 
