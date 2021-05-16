@@ -104,4 +104,4 @@ proc run1*() =
   w.show()
   app.run()
 
-run1()
+
