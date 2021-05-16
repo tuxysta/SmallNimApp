@@ -21,105 +21,107 @@ method handleDrawEvent(control: CustomButton, event: DrawEvent) =
   canvas.drawRectArea(0, 0, control.width, control.height)
   canvas.drawTextCentered(control.text)
   canvas.drawRectOutline(0, 0, control.width, control.height)
-  
+
 proc newButton(text = ""): Button =
   result = new CustomButton
   result.init()
   result.text = text
 
 
-proc win*() = 
 
-  app.init()
+app.init()
 
-  var win = newWindow("Calc")
-  win.height = 1000
-  win.width = 1000
+var win = newWindow("Calc")
+win.height = 1000
+win.width = 1000
 
-  var container = newLayoutContainer(Layout_Vertical)
-  var newcontainer1 = newLayoutContainer(Layout_Horizontal)
-  var sidecontainer1 = newLayoutContainer(Layout_Horizontal)
-  var sidecontainer = newLayoutContainer(Layout_Horizontal)
-  var bottomContainer = newLayoutContainer(Layout_Horizontal)
-  var topContainer = newLayoutContainer(Layout_Horizontal)
-  newcontainer1.height = 20
-
-
-  win.add(container)
-  container.add(newcontainer1)
-  container.add(sidecontainer1)
-  container.add(sidecontainer)
-  container.add(topContainer)
-  container.add(bottomContainer)
-
-  var inputTextArea = newTextArea("")
-  var outputTextArea = newTextArea("")
-
-  inputTextArea.fontFamily = "Courier New"
-  outputTextArea.fontFamily = "Courier New"
-  inputTextArea.fontSize = 18
-  outputTextArea.fontSize = 18
-
-  inputTextArea.editable = true
-  outputTextArea.editable = false
-
-  var fbutton6 = newButton("Guess a number between 0 and 1000")
-  var fbutton7 = newButton("Guess")
+var container = newLayoutContainer(Layout_Vertical)
+var newcontainer1 = newLayoutContainer(Layout_Horizontal)
+var sidecontainer1 = newLayoutContainer(Layout_Horizontal)
+var sidecontainer = newLayoutContainer(Layout_Horizontal)
+var bottomContainer = newLayoutContainer(Layout_Horizontal)
+var topContainer = newLayoutContainer(Layout_Horizontal)
+newcontainer1.height = 20
 
 
+win.add(container)
+container.add(newcontainer1)
+container.add(sidecontainer1)
+container.add(sidecontainer)
+container.add(topContainer)
+container.add(bottomContainer)
 
-  fbutton6.widthMode = WidthMode_Expand
-  fbutton7.widthMode = WidthMode_Expand
+var inputTextArea = newTextArea("")
+var outputTextArea = newTextArea("")
+
+inputTextArea.fontFamily = "Courier New"
+outputTextArea.fontFamily = "Courier New"
+inputTextArea.fontSize = 18
+outputTextArea.fontSize = 18
+
+inputTextArea.editable = true
+outputTextArea.editable = false
+
+var fbutton6 = newButton("Guess a number between 0 and 1000")
+var fbutton7 = newButton("Guess")
 
 
-  fbutton6.fontSize = 36
-  fbutton7.fontSize = 36
 
+fbutton6.widthMode = WidthMode_Expand
+fbutton7.widthMode = WidthMode_Expand
+
+
+fbutton6.fontSize = 36
+fbutton7.fontSize = 36
+
+randomize() 
+
+var a = rand(1000)
+proc bar() =
+
+  if a > inputTextArea.text.parseInt():
+    outputTextArea.text = "Too small"
+  if a < inputTextArea.text.parseInt():
+    outputTextArea.text = "Too big"
+  if a == inputTextArea.text.parseInt():
+    outputTextArea.text = "Just right!!"
+
+
+
+var quit = newButton("Quit")
+quit.widthMode = WidthMode_Expand
+
+newcontainer1.add(quit)
+topContainer.add(inputTextArea)
+sidecontainer.add(fbutton7)
+sidecontainer1.add(fbutton6)
+bottomContainer.add(outputTextArea)
+
+fbutton7.onClick = proc(event: ClickEvent) =
   randomize() 
 
-  var a = rand(1000)
-  proc bar() =
-  
-    if a > inputTextArea.text.parseInt():
-      outputTextArea.text = "Too small"
-    if a < inputTextArea.text.parseInt():
-      outputTextArea.text = "Too big"
-    if a == inputTextArea.text.parseInt():
-      outputTextArea.text = "Just right!!"
+var a = rand(1000)
 
+fbutton7.onClick = proc(event: ClickEvent) =
 
+  try:
 
-  var quit = newButton("Quit")
-  quit.widthMode = WidthMode_Expand
-
-  newcontainer1.add(quit)
-  topContainer.add(inputTextArea)
-  sidecontainer.add(fbutton7)
-  sidecontainer1.add(fbutton6)
-  bottomContainer.add(outputTextArea)
-
-  fbutton7.onClick = proc(event: ClickEvent) =
-    randomize() 
-
-    var a = rand(1000)
-    
-  fbutton7.onClick = proc(event: ClickEvent) =
-
-    try:
-      
-      bar()
-    except Exception:
-      app.quit()
-      app.run()
-     
-  
-  quit.onClick = proc(event: ClickEvent) =
-    
+    bar()
+  except Exception:
     app.quit()
+    app.run()
+ 
 
-  if Key_Q.isDown() and Key_ControlL.isDown():
-    app.quit()
+quit.onClick = proc(event: ClickEvent) =
 
-  
+  app.quit()
+
+if Key_Q.isDown() and Key_ControlL.isDown():
+  app.quit()
+
+
+
+
+proc win*() =
   win.show()
   app.run()
