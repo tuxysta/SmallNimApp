@@ -34,7 +34,7 @@ proc newButton(text = ""): Button =
 app.init()
 
 var window = newWindow("Choose!")
-window.height = 200
+window.height = 400
 window.width = 400
 
 var con = newLayoutContainer(Layout_Vertical)
@@ -67,6 +67,8 @@ but1.widthMode = WidthMode_Expand
 but2.widthMode = WidthMode_Expand
 but3.widthMode = WidthMode_Expand
 but4.widthMode = WidthMode_Expand
+but5.widthMode = WidthMode_Expand
+
 
 
 middleCon.add(but1)
