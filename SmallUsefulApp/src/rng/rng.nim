@@ -9,8 +9,9 @@
 
 #THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import nigui, strutils, os, math, random
-
+import nigui
+from random import randomize, rand
+from strutils import parseInt, inttoStr
 
 type CustomButton = ref object of Button
 method handleDrawEvent(control: CustomButton, event: DrawEvent) =
@@ -46,23 +47,23 @@ proc run1*() =
   var file6 = newLayoutContainer(Layout_Horizontal)
 
   w.add(container)
-  file4.height = 30
-  file3.height = 30
   file1.height = 5
+  file2.height = 30
+  file3.height = 30
+  file4.height = 17
   file6.height = 15
   container.add(file1)
-  container.add(file6)
-
+  container.add(file2)
   container.add(file3)
   container.add(file4)
-  container.add(file2)
   container.add(file5)
+  container.add(file6)
 
   var quit = newButton("Quit")
-  var but = newButton("Generate a random int between the two ints you inputed above. They have to be valid ints.")
-  but.widthMode = WidthMode_Expand
+  var button = newButton("Generate a random int between the two ints you inputed above. They have to be valid ints.")
+  button.widthMode = WidthMode_Expand
   quit.widthMode = WidthMode_Expand
-  file2.add(but)
+  file4.add(button)
   file1.add(quit)
 
   var text = newTextArea()
@@ -77,9 +78,9 @@ proc run1*() =
   file6.add(text1label)
   var text1 = newTextArea()
   text1.editable = true
-  file3.add(text1)
+  file2.add(text1)
   var text2 = newTextArea()
-  file4.add(text2)
+  file3.add(text2)
   text2.editable = true
 
 
@@ -88,7 +89,7 @@ proc run1*() =
   quit.onClick = proc(event: ClickEvent) =
     app.quit()
 
-  but.onClick = proc(event: ClickEvent) =
+  button.onClick = proc(event: ClickEvent) =
     try:
       var a = parseInt(text1.text) 
       var b = parseInt(text2.text)
@@ -103,3 +104,4 @@ proc run1*() =
   w.show()
   app.run()
 
+run1()
