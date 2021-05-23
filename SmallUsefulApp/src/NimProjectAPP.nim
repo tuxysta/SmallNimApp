@@ -99,8 +99,9 @@ but3.onClick = proc(event: ClickEvent) =
 but4.onClick = proc(event: ClickEvent) =
   encrypttext.run1()
   window.dispose()
-but5.onClick = proc(event: ClickEvent) +
+but5.onClick = proc(event: ClickEvent) =
   hash.wint()
+  window.dispose()
 but6.onClick = proc(event: ClickEvent) =
   app.quit()
   
