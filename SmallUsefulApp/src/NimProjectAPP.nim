@@ -13,8 +13,7 @@ from calc/calc import winq
 from  rng/rng import run1
 from NumberGuess/game import winl
 from encrypttext/encrypttext import run1
-from hash/hash import win10
-
+import hash/hash
 
 type CustomButton = ref object of Button
 method handleDrawEvent(control: CustomButton, event: DrawEvent) =
@@ -68,6 +67,7 @@ but2.widthMode = WidthMode_Expand
 but3.widthMode = WidthMode_Expand
 but4.widthMode = WidthMode_Expand
 but5.widthMode = WidthMode_Expand
+but6.widthMode = WidthMode_Expand
 
 
 
@@ -76,6 +76,7 @@ middleCon.add(but2)
 middleCon1.add(but3)
 middleCon1.add(but4)
 middleCon2.add(but5)
+middleCon2.add(but6)
 
 
 
@@ -99,7 +100,7 @@ but4.onClick = proc(event: ClickEvent) =
   encrypttext.run1()
   window.dispose()
 but5.onClick = proc(event: ClickEvent) +
-  hash.win10()
+  hash.wint()
 but6.onClick = proc(event: ClickEvent) =
   app.quit()
   

@@ -21,7 +21,6 @@ proc newButton(text = ""): Button =
 
 
 
-
 app.init()
 
 
@@ -80,9 +79,9 @@ quit.onClick = proc(event: ClickEvent) =
 if Key_Q.isDown() and Key_ControlL.isDown():
   app.quit()
 
-proc win10() =
+
+
+proc wint*() =
 
   win.show()
   app.run()
-
-  
