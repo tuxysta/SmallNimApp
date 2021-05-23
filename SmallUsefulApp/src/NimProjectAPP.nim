@@ -83,19 +83,22 @@ middleCon2.add(but5)
 
 but1.onClick = proc(event: ClickEvent) =
   calc.winq()
-  
+  window.dispose()
 
 but2.onClick = proc(event: ClickEvent) =
   game.winl()
-  
+  window.dispose()
+
 
 but3.onClick = proc(event: ClickEvent) =
   rng.run1()
-  
+  window.dispose()
+
 
 but4.onClick = proc(event: ClickEvent) =
   encrypttext.run1()
-  
+  window.dispose()
+
 but5.onClick = proc(event: ClickEvent) =
   app.quit()
   

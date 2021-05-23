@@ -15,12 +15,12 @@ from strutils import toUpper, parseInt
 
  
 proc caesar(s: string, k: int, decode = false): string =
-var k = if decode: 26 - k else: k
-var result = ""
-for i in toUpper(s):
-if ord(i) >= 65 and ord(i) <= 90:
-result.add(chr((ord(i) - 65 + k) mod 26 + 65))
-return result;
+  var k = if decode: 26 - k else: k
+  var result = ""
+  for i in toUpper(s):
+    if ord(i) >= 65 and ord(i) <= 90:
+      result.add(chr((ord(i) - 65 + k) mod 26 + 65))
+  return result;
 
  
 
@@ -105,8 +105,8 @@ but.onClick = proc(event: ClickEvent) =
 
     text3.text = caesar(text1.text, text2.text.parseInt(), decode)
   except Exception:
-  app.quit()
-  app.run()
+    app.quit()
+    app.run()
 
 if Key_Q.isDown() and Key_ControlL.isDown():
 
