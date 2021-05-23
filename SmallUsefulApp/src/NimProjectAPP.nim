@@ -8,12 +8,12 @@
 #The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 #THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-from calc/calc import winq
 import nigui
+from calc/calc import winq
 from  rng/rng import run1
 from NumberGuess/game import winl
 from encrypttext/encrypttext import run1
+from hash/hash import win10
 
 
 type CustomButton = ref object of Button
@@ -58,8 +58,8 @@ var but1 = newButton("Calc")
 var but2 = newButton("Guessing Game")
 var but3 = newButton("Random")
 var but4 = newButton("Encrypt")
-var but5 = newButton("Quit")
-
+var but5 = newButton("Hash")
+var but6 = newButton("Quit")
 
 
 
@@ -98,8 +98,9 @@ but3.onClick = proc(event: ClickEvent) =
 but4.onClick = proc(event: ClickEvent) =
   encrypttext.run1()
   window.dispose()
-
-but5.onClick = proc(event: ClickEvent) =
+but5.onClick = proc(event: ClickEvent) +
+  hash.win10()
+but6.onClick = proc(event: ClickEvent) =
   app.quit()
   
 if Key_Q.isDown() and Key_ControlL.isDown():

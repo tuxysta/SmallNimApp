@@ -65,7 +65,6 @@ var inputTextAreaLabel = newTextArea("The two boxes under this hold two numbers,
 var inputTextArea = newTextArea("")
 var inputTextArea1 = newTextArea("")
 var outputTextArea = newTextArea("")
-
 inputTextArea.fontFamily = "Courier New"
 inputTextArea1.fontFamily = "Courier New"
 outputTextArea.fontFamily = "Courier New"
