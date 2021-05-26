@@ -35,9 +35,9 @@ proc newButton(text = ""): Button =
 
 app.init()
 
-var win = newWindow("Word Count")
-win.height = 700
-win.width = 700
+var win = newWindow("Rough Word Count")
+win.height = 800
+win.width = 800
 
 var container = newLayoutContainer(Layout_Vertical)
 var newcontainer = newLayoutContainer(Layout_Horizontal)
@@ -86,3 +86,7 @@ count.onClick = proc(event: ClickEvent) =
 quit.onClick = proc(event: ClickEvent) =
   app.quit()
 
+
+proc runthis() = 
+  win.show()
+  app.run()

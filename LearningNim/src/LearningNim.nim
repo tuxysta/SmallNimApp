@@ -14,6 +14,8 @@ from  rng/rng import run1
 from NumberGuess/game import winl
 from encrypttext/encrypttext import run1
 import hash/hash
+from Rough\ Word\ Count/Rough\ Word\ Count import runthis
+
 
 type CustomButton = ref object of Button
 method handleDrawEvent(control: CustomButton, event: DrawEvent) =
@@ -40,15 +42,18 @@ var con = newLayoutContainer(Layout_Vertical)
 var middleCon = newLayoutContainer(Layout_Horizontal)
 var middleCon1 = newLayoutContainer(Layout_Horizontal)
 var middleCon2 = newLayoutContainer(Layout_Horizontal)
+var bottomCon = newLayoutContainer(Layout_Horizontal)
 
 middleCon.height = 100
 middleCon1.height = 100
 middleCon2.height = 100
+bottomCon.height = 100
 
 window.add(con)
 con.add(middleCon)
 con.add(middleCon1)
 con.add(middleCon2)
+con.add(bottomCon)
 
 
 
@@ -58,7 +63,8 @@ var but2 = newButton("Guessing Game")
 var but3 = newButton("Random")
 var but4 = newButton("Encrypt")
 var but5 = newButton("Hash")
-var but6 = newButton("Quit")
+var but6 = newButton("Word Count")
+var but7 = newButton("Quit")
 
 
 
@@ -68,6 +74,7 @@ but3.widthMode = WidthMode_Expand
 but4.widthMode = WidthMode_Expand
 but5.widthMode = WidthMode_Expand
 but6.widthMode = WidthMode_Expand
+but7.widthMode = WidthMode_Expand
 
 
 
@@ -77,6 +84,7 @@ middleCon1.add(but3)
 middleCon1.add(but4)
 middleCon2.add(but5)
 middleCon2.add(but6)
+bottomCon.add(but6)
 
 
 
@@ -103,8 +111,9 @@ but5.onClick = proc(event: ClickEvent) =
   hash.wint()
   window.dispose()
 but6.onClick = proc(event: ClickEvent) =
+  runthis()
+but7.onClick = proc(event: ClickEvent) =
   app.quit()
-  
 if Key_Q.isDown() and Key_ControlL.isDown():
   app.quit()
 
