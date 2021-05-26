@@ -5,7 +5,7 @@ author        = "Anonymous"
 description   = "A app that you can use as a calculator, a number guesser, and a rng."
 license       = "MIT"
 srcDir        = "src"
-bin           = @["NimProjectAPP"]
+bin           = @["LearningNim"]
 
 
 
