@@ -91,27 +91,27 @@ bottomCon.add(but7)
 
 
 but1.onClick = proc(event: ClickEvent) =
-  calc.winq()
+  calc.runcalc()
   window.dispose()
 
 but2.onClick = proc(event: ClickEvent) =
-  game.winl()
+  game.rungame()
   window.dispose()
 
 
 but3.onClick = proc(event: ClickEvent) =
-  rng.run1()
+  rng.runrng()
   window.dispose()
 
 
 but4.onClick = proc(event: ClickEvent) =
-  encrypttext.run1()
+  encrypttext.runencrypttext()
   window.dispose()
 but5.onClick = proc(event: ClickEvent) =
-  hash.wint()
+  hash.runHash()
   window.dispose()
 but6.onClick = proc(event: ClickEvent) =
-  RoughWordCount.runthis()
+  RoughWordCount.runcount()
 but7.onClick = proc(event: ClickEvent) =
   app.quit()
 if Key_Q.isDown() and Key_ControlL.isDown():
