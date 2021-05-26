@@ -14,7 +14,7 @@ from  rng/rng import run1
 from NumberGuess/game import winl
 from encrypttext/encrypttext import run1
 import hash/hash
-from Rough\ Word\ Count/Rough\ Word\ Count import runthis
+from RoughWordCount/RoughWordCount import runthis
 
 
 type CustomButton = ref object of Button
@@ -35,8 +35,8 @@ proc newButton(text = ""): Button =
 app.init()
 
 var window = newWindow("Choose!")
-window.height = 300
-window.width = 400
+window.height = 370
+window.width = 500
 
 var con = newLayoutContainer(Layout_Vertical)
 var middleCon = newLayoutContainer(Layout_Horizontal)
@@ -84,7 +84,7 @@ middleCon1.add(but3)
 middleCon1.add(but4)
 middleCon2.add(but5)
 middleCon2.add(but6)
-bottomCon.add(but6)
+bottomCon.add(but7)
 
 
 
@@ -111,7 +111,7 @@ but5.onClick = proc(event: ClickEvent) =
   hash.wint()
   window.dispose()
 but6.onClick = proc(event: ClickEvent) =
-  runthis()
+  RoughWordCount.runthis()
 but7.onClick = proc(event: ClickEvent) =
   app.quit()
 if Key_Q.isDown() and Key_ControlL.isDown():

@@ -36,7 +36,7 @@ proc newButton(text = ""): Button =
 app.init()
 
 var win = newWindow("Rough Word Count")
-win.height = 800
+win.height = 700
 win.width = 800
 
 var container = newLayoutContainer(Layout_Vertical)
@@ -51,7 +51,7 @@ container.add(newcontainer1)
 container.add(bottomcontainer)
 
 var quit = newButton("Quit")
-var count = newButton("Count Words")
+var count = newButton("Count")
 var inputTextArea = newTextArea("")
 var outputTextArea = newTextArea("")
 
@@ -60,6 +60,7 @@ outputTextArea.editable = false
 
 
 quit.widthMode = WidthMode_Expand
+count.widthMode = WidthMode_Expand
 
 
 quit.fontFamily = "Courier New"
@@ -87,6 +88,6 @@ quit.onClick = proc(event: ClickEvent) =
   app.quit()
 
 
-proc runthis() = 
+proc runthis*() = 
   win.show()
   app.run()
