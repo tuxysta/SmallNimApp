@@ -235,7 +235,7 @@ if Key_Q.isDown() and Key_ControlL.isDown():
   app.quit()
 
 
-proc winq*() = 
+proc runcalc*() = 
 
 
   win.show()

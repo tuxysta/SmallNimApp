@@ -113,7 +113,7 @@ if Key_Q.isDown() and Key_ControlL.isDown():
   app.quit()
 
 
-proc run1*() =
+proc runencrypttext*() =
 
   w.show()
   app.run()

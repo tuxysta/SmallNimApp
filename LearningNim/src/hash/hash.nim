@@ -81,7 +81,7 @@ if Key_Q.isDown() and Key_ControlL.isDown():
 
 
 
-proc wint*() =
+proc runHash*() =
 
   win.show()
   app.run()

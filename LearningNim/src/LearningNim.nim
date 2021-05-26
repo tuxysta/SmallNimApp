@@ -9,12 +9,12 @@
 
 #THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import nigui
-from calc/calc import winq
-from  rng/rng import run1
-from NumberGuess/game import winl
-from encrypttext/encrypttext import run1
-import hash/hash
-from RoughWordCount/RoughWordCount import runthis
+from calc/calc import runcalc
+from  rng/rng import runrng
+from NumberGuess/game import rungame
+from encrypttext/encrypttext import encrypttext
+from hash/hash import runHash
+from RoughWordCount/RoughWordCount import runcount
 
 
 type CustomButton = ref object of Button

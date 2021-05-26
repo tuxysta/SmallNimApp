@@ -101,7 +101,7 @@ button.onClick = proc(event: ClickEvent) =
 if Key_Q.isDown() and Key_ControlL.isDown():
   app.quit()
 
-proc run1*() =
+proc runrng*() =
   w.show()
   app.run()
 

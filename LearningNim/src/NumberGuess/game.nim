@@ -121,6 +121,6 @@ if Key_Q.isDown() and Key_ControlL.isDown():
 
 
 
-proc winl*() =
+proc rungame*() =
   win.show()
   app.run()

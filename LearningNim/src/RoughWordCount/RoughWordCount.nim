@@ -88,6 +88,6 @@ quit.onClick = proc(event: ClickEvent) =
   app.quit()
 
 
-proc runthis*() = 
+proc runcount*() = 
   win.show()
   app.run()
