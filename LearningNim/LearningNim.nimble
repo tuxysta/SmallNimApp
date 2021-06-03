@@ -11,5 +11,6 @@ bin           = @["LearningNim"]
 
 # Dependencies
 
-requires "nim >= 1.4.6"
+requires "nim >= 1.4.8"
 requires "nigui"
+requires "bigints"

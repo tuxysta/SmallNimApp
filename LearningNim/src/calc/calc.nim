@@ -11,7 +11,7 @@
 
 
 import os, nigui, bigints
-from strutils import initBigInt, parseFloat, formatFloat, intToStr
+from strutils import parseInt, parseFloat, formatFloat, intToStr
 from math import log10, round
 
 type CustomButton = ref object of Button
@@ -153,7 +153,7 @@ fbutton1.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() + inputTextArea1.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() + inputTextArea1.text.initBigInt())
+      outputTextArea.text = $(inputTextArea.text.initBigInt() + inputTextArea1.text.initBigInt())
   except Exception:
 
     app.quit()
@@ -162,11 +162,12 @@ fbutton1.onClick = proc(event: ClickEvent) =
 
 fbutton2.onClick = proc(event: ClickEvent) =
   try:
+
+
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() - inputTextArea1.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() - inputTextArea1.text.initBigInt())
-
+      outputTextArea.text = $(inputTextArea.text.initBigInt() - inputTextArea1.text.initBigInt())
   except Exception:
     app.quit()
     app.run()
@@ -177,7 +178,7 @@ fbutton3.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea1.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() * inputTextArea1.text.initBigInt())
+      outputTextArea.text = $(inputTextArea.text.initBigInt() * inputTextArea1.text.initBigInt())
   except Exception:
     app.quit()
     app.run()
@@ -188,7 +189,7 @@ fbutton4.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() / inputTextArea1.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(int(inputTextArea.text.initBigInt() / inputTextArea1.text.initBigInt()))
+      outputTextArea.text = $(initBigInt(inputTextArea.text.initBigInt() div inputTextArea1.text.initBigInt()))
   except Exception:
     app.quit()
     app.run()
@@ -205,7 +206,7 @@ fbutton5.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() * inputTextArea.text.initBigInt())
+      outputTextArea.text = $(inputTextArea.text.initBigInt() * inputTextArea.text.initBigInt())
   except Exception:
     app.quit()
     app.run()
@@ -215,7 +216,7 @@ fbutton6.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() * inputTextArea.text.initBigInt() * inputTextArea.text.initBigInt())
+      outputTextArea.text = $(inputTextArea.text.initBigInt() * inputTextArea.text.initBigInt() * inputTextArea.text.initBigInt())
   except Exception:
     app.quit()
     app.run()

@@ -13,6 +13,7 @@
 
 import nigui
 import strutils
+import parseutils
 
 
 
@@ -82,7 +83,7 @@ bottomcontainer.add(outputTextArea)
 
 
 count.onClick = proc(event: ClickEvent) =
-  outputTextArea.text = intToStr(int(len(inputTextArea.text) / 6))
+  outputTextArea.text = split(inputTextArea.text, ' ')
 
 quit.onClick = proc(event: ClickEvent) =
   app.quit()
