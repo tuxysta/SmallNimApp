@@ -10,8 +10,8 @@
 #THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-import os, nigui
-from strutils import parseInt, parseFloat, formatFloat, intToStr
+import os, nigui, bigints
+from strutils import initBigInt, parseFloat, formatFloat, intToStr
 from math import log10, round
 
 type CustomButton = ref object of Button
@@ -153,7 +153,7 @@ fbutton1.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() + inputTextArea1.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.parseInt() + inputTextArea1.text.parseInt())
+      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() + inputTextArea1.text.initBigInt())
   except Exception:
 
     app.quit()
@@ -165,7 +165,7 @@ fbutton2.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() - inputTextArea1.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.parseInt() - inputTextArea1.text.parseInt())
+      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() - inputTextArea1.text.initBigInt())
 
   except Exception:
     app.quit()
@@ -177,7 +177,7 @@ fbutton3.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea1.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.parseInt() * inputTextArea1.text.parseInt())
+      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() * inputTextArea1.text.initBigInt())
   except Exception:
     app.quit()
     app.run()
@@ -188,7 +188,7 @@ fbutton4.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() / inputTextArea1.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(int(inputTextArea.text.parseInt() / inputTextArea1.text.parseInt()))
+      outputTextArea.text = intToStr(int(inputTextArea.text.initBigInt() / inputTextArea1.text.initBigInt()))
   except Exception:
     app.quit()
     app.run()
@@ -205,7 +205,7 @@ fbutton5.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.parseInt() * inputTextArea.text.parseInt())
+      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() * inputTextArea.text.initBigInt())
   except Exception:
     app.quit()
     app.run()
@@ -215,7 +215,7 @@ fbutton6.onClick = proc(event: ClickEvent) =
     if floattrue:
       outputTextArea.text = (inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat() * inputTextArea.text.parseFloat()).formatFloat()
     else:
-      outputTextArea.text = intToStr(inputTextArea.text.parseInt() * inputTextArea.text.parseInt() * inputTextArea.text.parseInt())
+      outputTextArea.text = intToStr(inputTextArea.text.initBigInt() * inputTextArea.text.initBigInt() * inputTextArea.text.initBigInt())
   except Exception:
     app.quit()
     app.run()
