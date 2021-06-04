@@ -83,7 +83,13 @@ bottomcontainer.add(outputTextArea)
 
 
 count.onClick = proc(event: ClickEvent) =
-  outputTextArea.text = intToStr(len(split(inputTextArea.text, ' ')))
+  try:
+
+    outputTextArea.text = intToStr(len(split(inputTextArea.text, ' ')))
+
+  except Exception:
+    app.quit()
+    app.run()
 
 quit.onClick = proc(event: ClickEvent) =
   app.quit()

@@ -86,14 +86,25 @@ bottomcontainer.add(outputTextArea)
 
 
 open.onClick = proc(event: ClickEvent) =
+  try:
+    outputTextArea.text = readFile(inputTextArea.text)
+
+  except Exception:
+    app.quit()
+    app.run()
+
   
-  outputTextArea.text = readFile(inputTextArea.text)
 
 save.onClick = proc(event: ClickEvent) =
-  var file = inputTextArea.text
-  removeFile(file)
-  var f = open(file, fmWrite);
-  f.write(outputTextArea.text)
+  try:
+    var file = inputTextArea.text
+    removeFile(file)
+    var f = open(file, fmWrite);
+    f.write(outputTextArea.text)
+  except Exception:
+    app.quit()
+    app.run()
+    
 quit.onClick = proc(event: ClickEvent) =
   app.quit()
 
