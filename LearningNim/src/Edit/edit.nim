@@ -10,11 +10,8 @@
 #THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-
+import os
 import nigui
-import strutils
-import parseutils
-
 
 
 type CustomButton = ref object of Button
@@ -36,13 +33,14 @@ proc newButton(text = ""): Button =
 
 app.init()
 
-var win = newWindow("Rough Word Count")
-win.height = 700
+var win = newWindow("Text Editor")
+win.height = 800
 win.width = 800
 
 var container = newLayoutContainer(Layout_Vertical)
 var newcontainer = newLayoutContainer(Layout_Horizontal)
 var newcontainer1 = newLayoutContainer(Layout_Horizontal)
+newcontainer1.height = 60 
 var bottomcontainer = newLayoutContainer(Layout_Horizontal)
 
 
@@ -52,43 +50,57 @@ container.add(newcontainer1)
 container.add(bottomcontainer)
 
 var quit = newButton("Quit")
-var count = newButton("Count")
+var open = newButton("Open")
+var save = newButton("Save")
+
 var inputTextArea = newTextArea("")
 var outputTextArea = newTextArea("")
 
 inputTextArea.editable = true
-outputTextArea.editable = false
-
+outputTextArea.editable = true
 
 quit.widthMode = WidthMode_Expand
-count.widthMode = WidthMode_Expand
+open.widthMode = WidthMode_Expand
+save.widthMode = WidthMode_Expand
 
 
-quit.fontFamily = "Courier New"
-count.fontFamily = "Courier New"
+open.fontFamily = "Courier New"
+save.fontFamily = "Courier New"
 inputTextArea.fontFamily = "Courier New"
 outputTextArea.fontFamily = "Courier New"
 
 quit.fontSize = 18
-count.fontSize = 18
-inputTextArea.fontSize = 18
+
+save.fontSize = 18
+open.fontSize = 18
+inputTextArea.fontSize = 32
 outputTextArea.fontSize = 18
 
 newcontainer.add(quit)
-newcontainer.add(count)
+newcontainer.add(open)
+newcontainer.add(save)
 newcontainer1.add(inputTextArea)
 bottomcontainer.add(outputTextArea)
 
 
 
 
-count.onClick = proc(event: ClickEvent) =
-  outputTextArea.text = split(inputTextArea.text, ' ')
+open.onClick = proc(event: ClickEvent) =
+  
+  outputTextArea.text = readFile(inputTextArea.text)
 
+save.onClick = proc(event: ClickEvent) =
+  var file = inputTextArea.text
+  removeFile(file)
+  var f = open(file, fmWrite);
+  f.write(outputTextArea.text)
 quit.onClick = proc(event: ClickEvent) =
   app.quit()
 
 
-proc runcount*() = 
+proc runedit*() =
   win.show()
   app.run()
+
+
+

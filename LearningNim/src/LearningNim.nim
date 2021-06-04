@@ -12,9 +12,11 @@ import nigui
 from calc/calc import runcalc
 from  rng/rng import runrng
 from NumberGuess/game import rungame
-from encrypttext/encrypttext import encrypttext
+from encrypttext/encrypttext import runencrypttext
 from hash/hash import runHash
-from RoughWordCount/RoughWordCount import runcount
+from edit/edit import runedit
+
+from WordCount/WordCount import runcount
 
 
 type CustomButton = ref object of Button
@@ -64,7 +66,8 @@ var but3 = newButton("Random")
 var but4 = newButton("Encrypt")
 var but5 = newButton("Hash")
 var but6 = newButton("Word Count")
-var but7 = newButton("Quit")
+var but7 = newButton("Edit")
+var but8 = newButton("Quit")
 
 
 
@@ -75,6 +78,7 @@ but4.widthMode = WidthMode_Expand
 but5.widthMode = WidthMode_Expand
 but6.widthMode = WidthMode_Expand
 but7.widthMode = WidthMode_Expand
+but8.widthMode = WidthMode_Expand
 
 
 
@@ -85,6 +89,7 @@ middleCon1.add(but4)
 middleCon2.add(but5)
 middleCon2.add(but6)
 bottomCon.add(but7)
+bottomCon.add(but8)
 
 
 
@@ -111,8 +116,12 @@ but5.onClick = proc(event: ClickEvent) =
   hash.runHash()
   window.dispose()
 but6.onClick = proc(event: ClickEvent) =
-  RoughWordCount.runcount()
+  WordCount.runcount()
+
 but7.onClick = proc(event: ClickEvent) =
+  edit.runedit()
+
+but8.onClick = proc(event: ClickEvent) =
   app.quit()
 if Key_Q.isDown() and Key_ControlL.isDown():
   app.quit()
